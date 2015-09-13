@@ -1,4 +1,4 @@
-# gitignore.rb [![Build Status](https://travis-ci.org/nathankleyn/gitignore.rb.svg)](https://travis-ci.org/nathankleyn/gitignore.rb)
+# gitignore.rb [![Build Status](https://travis-ci.org/nathankleyn/gitignore.rb.svg)](https://travis-ci.org/nathankleyn/gitignore.rb) [![RubyGems Version Of gitignore_rb](https://img.shields.io/gem/v/gitignore_rb.svg)](https://rubygems.org/gems/gitignore_rb)
 
 This is an implementation of `.gitignore` parsing and matching in Rust. Use this library if you want to check whether a given path would be excluded by a `.gitignore` file.
 

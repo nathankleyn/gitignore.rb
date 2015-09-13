@@ -1,4 +1,6 @@
 language: ruby
+rust:
+  - nightly
 rvm:
   - 2.2.3
 script: rubocop && rspec
