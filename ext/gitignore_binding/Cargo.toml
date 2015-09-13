@@ -1,0 +1,12 @@
+[package]
+name = "gitignore_binding"
+version = "0.1.0"
+authors = ["Nathan Kleyn <nathan@nathankleyn.com>"]
+
+[lib]
+name = "gitignore_binding"
+crate-type = ["dylib"]
+
+[dependencies]
+libc = "0.1.10"
+gitignore = "1.0.2"
