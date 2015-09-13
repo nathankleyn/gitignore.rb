@@ -1,6 +1,6 @@
-require 'gitignore/rust'
+require 'gitignore_rb/rust'
 
-class GitIgnore
+class GitIgnoreRb
   def initialize(path)
     @path = path
   end

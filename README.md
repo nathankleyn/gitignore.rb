@@ -1,18 +1,24 @@
-# Gem Scaffold [![Build Status](https://travis-ci.org/nathankleyn/gem_scaffold.svg)](https://travis-ci.org/nathankleyn/gem_scaffold)
+# gitignore.rb [![Build Status](https://travis-ci.org/nathankleyn/gitignore.rb.svg)](https://travis-ci.org/nathankleyn/gitignore.rb)
 
-This repository aims to be an opinionated scaffold from which you can base Rubygems. This has been done a thousand times before, and there are even [commands built into things like Bundler to do this](http://bundler.io/rubygems.html), but I still find I have to spend way too much time pulling out all the junk that gets added that I don't want - this project aims to fix that for at least me.
+This is an implementation of `.gitignore` parsing and matching in Rust. Use this library if you want to check whether a given path would be excluded by a `.gitignore` file.
 
-## Using The Scaffold
+This library wraps [my Rust implementation of `.gitignore` semantics](https://github.com/nathankleyn/gitignore.rs) for performance.
 
-Fork this repository, and edit away to make your gem!
+## Usage
 
-### Files You Need To Change
+The Gem is called `gitignore_rb` and you can it is available via [RubyGems](https://rubygems.org/gems/gitignore_rb):
 
-* `your_wonderful_gem.gemspec` - rename this to the name of your gem, and edit the contents as you need.
-* `LICENCE` - by default it's MIT, so either add your name and the copyright, or edit the license to be the one you want.
-* `lib`- add to, rename and move the contents to suit your gem.
+```sh
+gem install gitignore_rb
+```
 
-### Files You May Want To Change
+## Examples
 
-* `.rubocop.yml` - add your Rubocop rules here.
-* `.travis.yml` - add more Ruby versions or edit your test command.
+A simple example is as follows:
+
+```ruby
+require 'gitignore'
+
+gi = GitIgnore.new('/path/to/.gitignore')
+gi.included_files #=> ['foo', 'bar', 'lux/win', ...]
+```
