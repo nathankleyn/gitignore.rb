@@ -6,6 +6,6 @@ class GitIgnoreRb
   end
 
   def included_files
-    GitIgnoreRust::included_files(@path).to_a
+    GitIgnoreRust.included_files(@path).to_a
   end
 end

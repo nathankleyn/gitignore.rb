@@ -6,8 +6,8 @@ Gem::Specification.new do |gem|
 
   gem.author = 'Nathan Kleyn'
   gem.email = 'nathan@nathankleyn.com'
-  gem.summary = 'Implementation of .gitignore file parsing and glob testing. This library is a Ruby binding around gitignore.rs.'
-  gem.description = "See #{gem.homepage} for more information!"
+  gem.summary = 'A Ruby binding around gitignore.rs, a Rust implementation of .gitignore file parsing and glob testing.'
+  gem.description = gem.summary
 
   # Uncomment this if you plan on having an executable instead of a library.
   # gem.executables << 'your_wonderful_gem'
