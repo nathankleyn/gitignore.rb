@@ -33,7 +33,6 @@ pub extern "C" fn included_files(path_ptr: *const libc::c_char) -> RubyArray {
     let file = gitignore::File::new(&gitignore_path).unwrap();
 
     let files = file.included_files().unwrap();
-    println!("{:?}", files);
     RubyArray::from_vec(paths_to_ptrs(files))
 }
 
