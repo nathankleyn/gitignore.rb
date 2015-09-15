@@ -1,4 +1,5 @@
 require 'gitignore_rb/rust'
+require 'gitignore_rb/string_array'
 
 # Represents a `.gitignore` file and the operations one can perform on or with
 # them.
@@ -12,6 +13,8 @@ class GitIgnoreRb
   end
 
   def included_files
-    GitIgnoreRust.included_files(@path).to_a
+    StringArray.new(GitIgnoreRust.included_files(@path)).to_a
   end
 end
+
+GitIgnoreRb.new('/Users/nathan/repos/ihq/platform').included_files

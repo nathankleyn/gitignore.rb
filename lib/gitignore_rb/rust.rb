@@ -7,15 +7,6 @@ module GitIgnoreRust
 
   ffi_lib File.expand_path(File.join(__dir__, '../../ext/gitignore_binding/target/release/libgitignore_binding.dylib'))
 
-  # Struct used to describe a Ruby Array of Strings being passed from Rust.
-  class ArrayString < FFI::Struct
-    layout :len, :size_t, # dynamic array layout
-           :data, :pointer
-
-    def to_a
-      self[:data].get_array_of_string(0, self[:len]).compact
-    end
-  end
-
-  attach_function :included_files, [:string], ArrayString.by_value
+  attach_function :included_files, [:string], :pointer
+  attach_function :free_array, [:pointer], :void
 end

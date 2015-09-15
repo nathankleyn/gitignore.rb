@@ -1,1 +1,29 @@
-# FIXME: Make this check for presence of `rustc` and compile the library.
+LIB_PATH = 'target/release/libgitignore_binding.dylib'
+
+desc 'Ensure rustc is present and is callable on the current PATH.'
+task :check_rustc do
+  puts 'Checking for rustc...'
+  unless system 'rustc --version'
+    raise 'Could not find rustc on your path, please check you have it installed.'
+  end
+end
+
+desc 'Ensure cargo is present and is callable on the current PATH.'
+task :check_cargo do
+  puts 'Checking for cargo...'
+  unless system 'cargo --version'
+    raise 'Could not find cargo on your path, please check you have it installed.'
+  end
+end
+
+desc 'Execute cargo build to construct the dynamic library.'
+task :build do
+  unless system 'cargo build --release'
+    raise 'Could not execute cargo build successfully, please check the logs and try again.'
+  end
+end
+
+file LIB_PATH => :build
+
+desc 'Build the dynamic library.'
+task default: LIB_PATH

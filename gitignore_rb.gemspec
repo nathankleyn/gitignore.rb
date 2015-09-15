@@ -1,6 +1,6 @@
 Gem::Specification.new do |gem|
   gem.name = 'gitignore_rb'
-  gem.version = '0.1.0'
+  gem.version = '0.2.0'
   gem.homepage = 'https://github.com/nathankleyn/gitignore.rb'
   gem.license = 'MIT'
 
