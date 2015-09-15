@@ -13,7 +13,7 @@ class GitIgnoreRb
   end
 
   def included_files
-    StringArray.new(GitIgnoreRust.included_files(@path)).to_a
+    GitIgnoreRust.included_files(@path).to_a
   end
 end
 
