@@ -48,6 +48,10 @@ fn ptr_to_string(ptr: *const libc::c_char) -> Result<String, FromUtf8Error> {
 fn paths_to_ptrs(paths: Vec<PathBuf>) -> Vec<*const libc::c_char> {
     paths.iter().flat_map(|p| p.to_str())
                 .flat_map(|s| CString::new(s))
-                .map(|cs| cs.as_ptr())
+                .map(|cs| {
+                    let ptr = cs.as_ptr();
+                    mem::forget(cs);
+                    ptr
+                })
                 .collect()
 }
