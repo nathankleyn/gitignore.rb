@@ -1,3 +1,5 @@
+require 'fileutils'
+
 LIB_PATH = 'target/release/libgitignore_binding.dylib'
 
 desc 'Ensure rustc is present and is callable on the current PATH.'
@@ -16,8 +18,13 @@ task :check_cargo do
   end
 end
 
+desc 'Ensure any previous builds are cleaned up properly.'
+task :clean do
+  FileUtils.rm_rf(File.join(__dir__, 'target'))
+end
+
 desc 'Execute cargo build to construct the dynamic library.'
-task :build do
+task :build => :clean do
   unless system 'cargo build --release'
     fail 'Could not execute cargo build successfully, please check the logs and try again.'
   end
