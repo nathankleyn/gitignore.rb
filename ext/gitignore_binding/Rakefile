@@ -24,7 +24,7 @@ task :clean do
 end
 
 desc 'Execute cargo build to construct the dynamic library.'
-task :build => :clean do
+task build: :clean do
   unless system 'cargo build --release'
     fail 'Could not execute cargo build successfully, please check the logs and try again.'
   end

@@ -5,7 +5,9 @@ require 'ffi'
 module GitIgnoreRust
   extend FFI::Library
 
-  ffi_lib File.expand_path(File.join(__dir__, '../../ext/gitignore_binding/target/release', FFI.map_library_name('libgitignore_binding')))
+  TARGET_DIR = File.expand_path(File.join(__dir__, '../../ext/gitignore_binding/target/release'))
+
+  ffi_lib File.join(TARGET_DIR, FFI.map_library_name('libgitignore_binding'))
 
   # Struct used to describe a Ruby Array of Strings being passed from Rust.
   class StringArray < FFI::Struct
