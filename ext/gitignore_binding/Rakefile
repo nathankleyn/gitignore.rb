@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'fileutils'
 
 LIB_PATH = 'target/release/libgitignore_binding.dylib'
@@ -5,17 +7,13 @@ LIB_PATH = 'target/release/libgitignore_binding.dylib'
 desc 'Ensure rustc is present and is callable on the current PATH.'
 task :check_rustc do
   puts 'Checking for rustc...'
-  unless system 'rustc --version'
-    fail 'Could not find rustc on your path, please check you have it installed.'
-  end
+  raise 'Could not find rustc on your path, please check you have it installed.' unless system 'rustc --version'
 end
 
 desc 'Ensure cargo is present and is callable on the current PATH.'
 task :check_cargo do
   puts 'Checking for cargo...'
-  unless system 'cargo --version'
-    fail 'Could not find cargo on your path, please check you have it installed.'
-  end
+  raise 'Could not find cargo on your path, please check you have it installed.' unless system 'cargo --version'
 end
 
 desc 'Ensure any previous builds are cleaned up properly.'
@@ -26,7 +24,7 @@ end
 desc 'Execute cargo build to construct the dynamic library.'
 task build: :clean do
   unless system 'cargo build --release'
-    fail 'Could not execute cargo build successfully, please check the logs and try again.'
+    raise 'Could not execute cargo build successfully, please check the logs and try again.'
   end
 end
 

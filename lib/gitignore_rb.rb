@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gitignore_rb/rust'
 
 # Represents a `.gitignore` file and the operations one can perform on or with

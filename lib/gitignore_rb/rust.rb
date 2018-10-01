@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'ffi'
 
 # Wraps up the FFI bindings to the Rust lib. This exposes the functions we have
